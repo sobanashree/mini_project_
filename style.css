@@ -1,0 +1,517 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2b1b14,
+            #4a2c20,
+            #1e1410
+        );
+}
+
+
+/* ================= COMMON ================= */
+
+.hidden {
+    display: none !important;
+}
+
+.page,
+.auth-page {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ================= GET STARTED ================= */
+
+.welcome-card {
+
+    width: 100%;
+    max-width: 480px;
+
+    min-height: 680px;
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background-image:
+
+        linear-gradient(
+            to bottom,
+            rgba(40, 20, 10, 0.05),
+            rgba(40, 20, 10, 0.35),
+            rgba(25, 12, 7, 0.95)
+        ),
+
+        url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1000&q=85");
+
+    background-size: cover;
+
+    background-position: center;
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.65);
+
+    transition: 0.4s ease;
+}
+
+
+.welcome-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.75);
+}
+
+
+.welcome-overlay {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 45px 35px;
+
+    color: white;
+}
+
+
+.badge {
+
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    backdrop-filter: blur(5px);
+
+    font-size: 12px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 18px;
+}
+
+
+.welcome-overlay h1 {
+
+    font-size: 32px;
+
+    line-height: 1.2;
+
+    margin-bottom: 15px;
+
+    letter-spacing: 1px;
+}
+
+
+.welcome-overlay p {
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color: #eadfd7;
+
+    margin-bottom: 28px;
+}
+
+
+.get-btn {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #c58b5c;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.get-btn:hover {
+
+    background: #dda675;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(197,139,92,0.4);
+}
+
+
+.dots {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 22px;
+}
+
+
+.dots span {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.4);
+}
+
+
+.dots .active {
+
+    width: 24px;
+
+    border-radius: 10px;
+
+    background: #c58b5c;
+}
+
+
+/* ================= AUTH CARD ================= */
+
+.auth-card {
+
+    width: 100%;
+
+    max-width: 430px;
+
+    padding: 38px 35px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffaf5,
+            #f1e1d2
+        );
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.45);
+
+    transition: 0.4s ease;
+}
+
+
+.auth-card:hover {
+
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 35px 70px rgba(0,0,0,0.55);
+}
+
+
+.auth-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #6b422d;
+
+    color: white;
+
+    font-size: 30px;
+
+    box-shadow:
+        0 8px 20px rgba(107,66,45,0.35);
+}
+
+
+.auth-card h1 {
+
+    text-align: center;
+
+    color: #43281c;
+
+    margin-top: 18px;
+
+    margin-bottom: 8px;
+}
+
+
+.subtitle {
+
+    text-align: center;
+
+    color: #8b6b5a;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+
+/* ================= FORM ================= */
+
+label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    margin-top: 15px;
+
+    color: #593a2b;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+
+input,
+textarea {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #d8c3b3;
+
+    border-radius: 10px;
+
+    background: #fffdfb;
+
+    color: #43281c;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: 0.3s ease;
+}
+
+
+input:focus,
+textarea:focus {
+
+    border-color: #9b6848;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(155,104,72,0.2);
+}
+
+
+textarea {
+
+    resize: vertical;
+}
+
+
+/* ================= BUTTON ================= */
+
+.primary-btn {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 22px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6b422d,
+            #9b6848
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.primary-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(107,66,45,0.35);
+}
+
+
+/* ================= ERROR ================= */
+
+#error {
+
+    color: #b3261e;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    margin-top: 12px;
+}
+
+
+#registerMessage {
+
+    text-align: center;
+
+    font-size: 13px;
+
+    margin-top: 12px;
+}
+
+
+.success {
+
+    color: #287443;
+}
+
+
+/* ================= LINKS ================= */
+
+.switch-link {
+
+    text-align: center;
+
+    margin-top: 22px;
+
+    font-size: 14px;
+
+    color: #765b4b;
+}
+
+
+.switch-link a,
+.reset-link a,
+.back-link a {
+
+    color: #75482f;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+
+.switch-link a:hover,
+.reset-link a:hover,
+.back-link a:hover {
+
+    text-decoration: underline;
+}
+
+
+.reset-link {
+
+    text-align: center;
+
+    margin-top: 15px;
+
+    font-size: 13px;
+}
+
+
+.back-link {
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    font-size: 13px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 500px) {
+
+    .welcome-card {
+
+        min-height: 600px;
+
+        border-radius: 20px;
+    }
+
+    .welcome-overlay {
+
+        padding: 30px 25px;
+    }
+
+    .welcome-overlay h1 {
+
+        font-size: 26px;
+    }
+
+    .auth-card {
+
+        padding: 30px 22px;
+    }
+
+}

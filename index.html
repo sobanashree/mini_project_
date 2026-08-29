@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= GET STARTED ================= -->
+
+<div id="getStartedView" class="page">
+
+    <div class="welcome-card">
+
+        <div class="welcome-overlay">
+
+            <span class="badge">📚 LIBRARY PORTAL</span>
+
+            <h1>LIBRARY<br>MANAGEMENT SYSTEM</h1>
+
+            <p>
+                Discover amazing books, manage your borrowings
+                and explore your digital library.
+            </p>
+
+            <button class="get-btn" onclick="showLogin()">
+                Get Started →
+            </button>
+
+            <div class="dots">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= LOGIN ================= -->
+
+<div id="loginView" class="auth-page hidden">
+
+    <div class="auth-card">
+
+        <div class="auth-icon">📖</div>
+
+        <h1>Welcome Back</h1>
+
+        <p class="subtitle">
+            Login to your library account
+        </p>
+
+        <form onsubmit="login(event)">
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+                required
+            >
+
+            <p id="error"></p>
+
+            <button type="submit" class="primary-btn">
+                Login
+            </button>
+
+        </form>
+
+        <div class="switch-link">
+            Don't have an account?
+            <a href="#" onclick="showRegister()">Register here</a>
+        </div>
+
+        <div class="reset-link">
+            <a href="resetpassword.html">Forgot Password?</a>
+        </div>
+
+        <div class="back-link">
+            <a href="#" onclick="showGetStarted()">
+                ← Back to Home
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= REGISTER ================= -->
+
+<div id="registerView" class="auth-page hidden">
+
+    <div class="auth-card register-card">
+
+        <div class="auth-icon">👤</div>
+
+        <h1>Create Account</h1>
+
+        <p class="subtitle">
+            Join our library community
+        </p>
+
+        <form onsubmit="register(event)">
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="regName"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="regEmail"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                id="regPhone"
+                placeholder="Enter phone number"
+                required
+            >
+
+            <label>Address</label>
+
+            <textarea
+                id="regAddress"
+                placeholder="Enter your address"
+                rows="3"
+                required
+            ></textarea>
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="regPassword"
+                placeholder="Create password"
+                required
+            >
+
+            <p id="registerMessage"></p>
+
+            <button type="submit" class="primary-btn">
+                Create Account
+            </button>
+
+        </form>
+
+        <div class="switch-link">
+            Already have an account?
+            <a href="#" onclick="showLogin()">Login here</a>
+        </div>
+
+        <div class="back-link">
+            <a href="#" onclick="showGetStarted()">
+                ← Back to Home
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function hideAll() {
+
+    document.getElementById("getStartedView")
+        .classList.add("hidden");
+
+    document.getElementById("loginView")
+        .classList.add("hidden");
+
+    document.getElementById("registerView")
+        .classList.add("hidden");
+}
+
+
+function showGetStarted() {
+
+    hideAll();
+
+    document.getElementById("getStartedView")
+        .classList.remove("hidden");
+}
+
+
+function showLogin() {
+
+    hideAll();
+
+    document.getElementById("loginView")
+        .classList.remove("hidden");
+}
+
+
+function showRegister() {
+
+    hideAll();
+
+    document.getElementById("registerView")
+        .classList.remove("hidden");
+}
+
+
+/* ================= REGISTER ================= */
+
+function register(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("regName").value;
+
+    const email =
+        document.getElementById("regEmail").value.toLowerCase();
+
+    const phone =
+        document.getElementById("regPhone").value;
+
+    const address =
+        document.getElementById("regAddress").value;
+
+    const password =
+        document.getElementById("regPassword").value;
+
+
+    const user = {
+
+        name: name,
+        email: email,
+        phone: phone,
+        address: address,
+        password: password
+
+    };
+
+
+    /* Save user in Local Storage */
+
+    localStorage.setItem(
+        email,
+        JSON.stringify(user)
+    );
+
+
+    document.getElementById("registerMessage")
+        .textContent = "✓ Registration successful!";
+
+
+    document.getElementById("registerMessage")
+        .className = "success";
+
+
+    setTimeout(function() {
+
+        showLogin();
+
+        document.getElementById("loginEmail")
+            .value = email;
+
+    }, 1000);
+
+}
+
+
+/* ================= LOGIN ================= */
+
+function login(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById("loginEmail")
+        .value
+        .toLowerCase();
+
+
+    const password =
+        document.getElementById("loginPassword")
+        .value;
+
+
+    /* Get registered user */
+
+    const savedUser =
+        localStorage.getItem(email);
+
+
+    /* Email not registered */
+
+    if (!savedUser) {
+
+        document.getElementById("error")
+            .textContent =
+            "❌ Email not registered. Please register first.";
+
+        return;
+    }
+
+
+    /* Convert JSON string to object */
+
+    const user =
+        JSON.parse(savedUser);
+
+
+    /* Check password */
+
+    if (user.password === password) {
+
+        /* Save current logged-in user */
+
+        localStorage.setItem(
+            "currentUser",
+            email
+        );
+
+
+        /* Go to dashboard */
+
+        window.location.href =
+            "dashboard.html";
+
+    }
+
+    else {
+
+        document.getElementById("error")
+            .textContent =
+            "❌ Incorrect password. Please try again.";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
